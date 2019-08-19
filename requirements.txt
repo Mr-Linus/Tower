@@ -1,0 +1,2 @@
+django==2.1.7
+django-bootstrap3==9.1.0
