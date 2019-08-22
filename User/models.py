@@ -8,7 +8,6 @@ class TowerUserManager(UserManager):
     def create_superuser(self, username, email, password, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
-        extra_fields.setdefault('UUID', '')
         extra_fields.setdefault('QQ', '')
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must have is_staff=True.')
@@ -27,7 +26,6 @@ class TowerUserManager(UserManager):
         return user
 
     def create_user(self, username, email=None, password=None, **extra_fields):
-        extra_fields.setdefault('UUID', '')
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         extra_fields.setdefault('QQ', '')
@@ -36,8 +34,5 @@ class TowerUserManager(UserManager):
 
 
 class User(AbstractUser):
-    UUID = models.CharField(default='', max_length=36, verbose_name="UUID Code")
     QQ = models.CharField(default='', max_length=60)
-    EndTime = models.DateField(verbose_name="End Time", default=now)
-    status = models.BooleanField(default=False, verbose_name="Status")
     objects = TowerUserManager()
