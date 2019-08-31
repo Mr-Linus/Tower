@@ -7,7 +7,7 @@ from User.form import CreationForm
 
 class UserLoginView(LoginView):
     template_name = 'User/login.html'
-    redirect_authenticated_user = False
+    redirect_authenticated_user = True
 
 
 class UserLogoutView(LogoutView):
