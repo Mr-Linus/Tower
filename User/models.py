@@ -35,3 +35,4 @@ class TowerUserManager(UserManager):
 class User(AbstractUser):
     QQ = models.CharField(default='', max_length=60)
     objects = TowerUserManager()
+

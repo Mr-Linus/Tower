@@ -1,7 +1,7 @@
 from kubernetes import client, config
 
 
-class K8S:
+class K8sList:
 
     def __init__(self):
         config.load_kube_config()
@@ -38,7 +38,6 @@ class K8S:
             if job_uid == pod.metadata.owner_references[0].uid:
                 return pod.metadata.name
         return None
-
 
 
 if __name__ == '__main__':
