@@ -4,7 +4,6 @@ from kubernetes import client, config
 class K8sTask:
     namespace = ''
     user = ''
-
     def __init__(self):
         config.load_kube_config()
 
@@ -37,11 +36,55 @@ class K8sTask:
     def list_namespace(self):
         return client.CoreV1Api().read_namespace(self.namespace)
 
+    def list_job(self):
+        return client.BatchV1Api().list_job_for_all_namespaces().items
+
+    def delete_job(self, name):
+        return client.BatchV1Api().delete_namespaced_job(name=name, namespace=self.namespace)
+
+    def create_job(self, name, image, cmd):
+        container = client.V1Container(
+            name=name,
+            image=image,
+            command=cmd,
+            volume_mounts=client.V1VolumeMount(
+                name=name+"volume",
+                mount_path="",
+            )
+        )
+        volume = client.V1Volume(
+            name=name+"-volume",
+            host_path=client.V1HostPathVolumeSource(
+                path="",
+                type="Directory"
+            )
+        )
+        template = client.V1PodTemplateSpec(
+            metadata=client.V1ObjectMeta(name=name, labels={"user": self.user}),
+            spec=client.V1PodSpec(
+                containers=[container],
+                volumes=volume,
+            )
+        )
+        spec = client.V1JobSpec(
+            template=template
+        )
+        job = client.V1Job(
+            api_version="batch/v1",
+            kind="Job",
+            metadata=client.V1ObjectMeta(name=name),
+            spec=spec
+        )
+        client.BatchV1Api().create_namespaced_job(
+            namespace=self.namespace,
+            body=job
+        )
+
 
 if __name__ == '__main__':
     k = K8sTask()
-    k.user='test'
+    k.user = 'test'
     #k.create_namespace()
-    print(k.get_user_namespace())
+    print(k.list_job())
     # for ns in k.get_user_namespace():
     #     print(ns.metadata.name)

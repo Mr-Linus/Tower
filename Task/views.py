@@ -4,6 +4,7 @@ from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
 from Task.k8s import K8sTask
 from Task.form import CreateNamespaceForm
+import time
 # Create your views here.
 
 
@@ -36,3 +37,26 @@ class DeleteNamespaceView(LoginRequiredMixin, TemplateView):
         k.namespace = self.kwargs.get('name')
         k.delete_namespace()
         return redirect("/task/namespace")
+
+
+class TaskView(LoginRequiredMixin, TemplateView):
+    template_name = 'Task/task.html'
+
+    def get_context_data(self, **kwargs):
+        k = K8sTask()
+        k.user = self.request.user.username
+        context = super().get_context_data(**kwargs)
+        context['k'] = k
+        return context
+
+
+class DeleteTaskView(LoginRequiredMixin, TemplateView):
+    template_name = "Task/task.html"
+
+    def get(self, request, *args, **kwargs):
+        k = K8sTask()
+        k.user = self.request.user.username
+        k.namespace = self.kwargs.get('namespace')
+        k.delete_job(self.kwargs.get('name'))
+        time.sleep(1)
+        return redirect("/task")

@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
 
 
-    <title>Tower</title>
+    <title>Tower-任务管理</title>
 
     <link rel="shortcut icon" href="favicon.ico">
         {% load static %}
@@ -42,7 +42,7 @@
                                 </div>
                             </li>
 
-                            <li>
+                            <li class="active">
                                 <a href="/task"><i class="fa fa-inbox"></i> <span class="nav-label">任务管理</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li><a class="J_menuItem" href="">添加任务</a>
@@ -112,66 +112,6 @@
                <div class="wrapper wrapper-content">
         <div class="row">
 
-            <div class="col-sm-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title ">
-{#                        <span class="label label-success pull-right">个</span>#}
-                        <h5>节点数</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">{{ k.node_num }}</h1>
-{#                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i>#}
-{#                        </div>#}
-{#                        <small>总收入</small>#}
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-info pull-right">已运行</span>
-                        <h5>容器数</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">{{ k.pod_num }}</h1>
-{#                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i>#}
-{#                        </div>#}
-{#                        <small>新订单</small>#}
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-primary pull-right">当前</span>
-                        <h5>正在运行的任务数</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">{{ k.job_num }}</h1>
-{#                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i>#}
-{#                        </div>#}
-{#                        <small>新访客</small>#}
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <span class="label label-danger pull-right">当前</span>
-                        <h5>命名空间</h5>
-                    </div>
-                    <div class="ibox-content">
-                        <h1 class="no-margins">{{ k.namespace_num }}</h1>
-{#                        <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i>#}
-{#                        </div>#}
-{#                        <small>12月</small>#}
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-
 
             <div class="col-sm-12">
 
@@ -201,11 +141,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for job in k.job_list %}
+                                        {% for job in k.list_job %}
                                         <tr>
                                             <td>{{ job.metadata.namespace }}</td>
                                             <td class="text-navy"> <i class="fa"></i>{{ job.metadata.name }}</td>
-                                            {% if job.status.active == 1 and job.status.succeeded == None %}
+                                            {% if job.status.active == 1 %}
                                                 <td><span class="label label-warning">正在运行</span>
                                                 </td>
                                             {% elif job.status.failed == 1 %}
@@ -214,8 +154,12 @@
                                             {% elif job.status.succeeded == 1 %}
                                                 <td><span class="label label-success">执行成功</span>
                                                 </td>
+                                            {% else %}
+                                                <td><span class="label label-danger">Inactive</span>
+                                                </td>
                                             {% endif %}
                                             <td><i class="fa fa-clock-o"></i> {{ job.metadata.creation_timestamp }} </td>
+                                            <td><a href="/task/delete/{{ job.metadata.namespace }}/{{ job.metadata.name }}"><span class="label label-danger">删除</span></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -224,88 +168,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>节点列表</h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                    <a class="close-link">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="ibox-content">
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table  margin bottom">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-left">节点名</th>
-                                                    <th>操作系统</th>
-                                                    <th class="text-center">内核版本</th>
-                                                    <th class="text-center">创建时间</th>
-                                                    <th class="text-center">架构</th>
-                                                    <th class="text-center">Kubernetes</th>
-                                                    <th class="text-center">容器引擎</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for node in k.node_list %}
-                                                <tr>
-                                                    <td class="text-left"><span class="label label-inverse">{{ node.metadata.name }}</span></td>
-                                                    <td><span class="label label-primary">{{ node.status.node_info.operating_system }}</span></td>
-                                                    <td class="text-center"><span class="label label-info">{{ node.status.node_info.kernel_version }}</span></td>
-                                                    <td class="text-center small"><i class="fa fa-clock-o"></i> {{ node.metadata.creation_timestamp }}</td>
-                                                    <td class="text-center small"><span class="label label-warning-light">{{ node.status.node_info.architecture }}</span></td>
-                                                    <td class="text-center small"><span class="label label-success">{{ node.status.node_info.kubelet_version }}</span></td>
-                                                    <td class="text-center small">{{ node.status.node_info.container_runtime_version }}</td>
-
-
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="col-sm-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>Profile Detail</h5>
-                        </div>
-                        <div>
-                            <div class="ibox-content no-padding border-left-right center-orientation">
-                            </div>
-                            <div class="ibox-content profile-content">
-                                <h4><strong>{{ user }}</strong></h4>
-                                <p>上次登录：<i class="fa fa-clock-o"></i> {{ user.last_login }}</p>
-                                <h5>
-                                    关于我：
-                                </h5>
-                                <p>
-                                     &nbsp; It's better to burn out than to fade away.
-                                </p>
-                                <div class="row m-t-lg">
-                                    <div class="col-md-4">
-                                        <span class="bar">E-mail</span>
-                                        <h5><strong></strong>{{ user.email }}</h5>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>
