@@ -84,7 +84,7 @@ class K8sTask:
 if __name__ == '__main__':
     k = K8sTask()
     k.user = 'test'
-    #k.create_namespace()
+    # k.create_namespace()
     print(k.list_job())
     # for ns in k.get_user_namespace():
     #     print(ns.metadata.name)
