@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4ac29e3-0861-46a1-8cb0-3547832688a9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/k8s.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/k8s.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/job.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/job.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,6 +171,10 @@
       <workItem from="1567485116698" duration="14361000" />
       <workItem from="1567573853040" duration="9002000" />
       <workItem from="1567660750091" duration="120000" />
+      <workItem from="1567692013246" duration="110000" />
+      <workItem from="1567776798640" duration="1173000" />
+      <workItem from="1567843205673" duration="1027000" />
+      <workItem from="1567867847263" duration="1088000" />
     </task>
     <servers />
   </component>

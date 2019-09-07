@@ -42,20 +42,20 @@ class K8sTask:
     def delete_job(self, name):
         return client.BatchV1Api().delete_namespaced_job(name=name, namespace=self.namespace)
 
-    def create_job(self, name, image, cmd):
+    def create_job(self, name, image, cmd, mount_path, path):
         container = client.V1Container(
             name=name,
             image=image,
             command=cmd,
             volume_mounts=client.V1VolumeMount(
                 name=name+"volume",
-                mount_path="",
+                mount_path=mount_path,
             )
         )
         volume = client.V1Volume(
             name=name+"-volume",
             host_path=client.V1HostPathVolumeSource(
-                path="",
+                path=path,
                 type="Directory"
             )
         )
@@ -83,8 +83,9 @@ class K8sTask:
 
 if __name__ == '__main__':
     k = K8sTask()
-    k.user = 'test'
+    k.user = 'root'
+    k.namespace='test'
     # k.create_namespace()
-    print(k.list_job())
+    print(k.create_job("test_job", ))
     # for ns in k.get_user_namespace():
     #     print(ns.metadata.name)

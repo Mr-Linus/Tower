@@ -8,8 +8,8 @@ spec:
     spec:
       containers:
       - name: pi
-        image: perl
-        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+        image: python:3.6
+        command: ["python",  "-c", "print('HelloWorld')"]
       restartPolicy: Never
   backoffLimit: 4
 ---
@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: pi
-        image: perl
-        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+        image: python:3.6
+        command: ["python",  "-c", "print('HelloWorld')"]
       restartPolicy: Never
   backoffLimit: 4
