@@ -8,10 +8,9 @@ spec:
     spec:
       containers:
       - name: pi
-        image: python:3.6
+        image: python:3.6-alpine
         command: ["python",  "-c", "print('HelloWorld')"]
       restartPolicy: Never
-  backoffLimit: 4
 ---
 apiVersion: batch/v1
 kind: Job
@@ -23,7 +22,6 @@ spec:
     spec:
       containers:
       - name: pi
-        image: python:3.6
+        image: python:3.6-alpine
         command: ["python",  "-c", "print('HelloWorld')"]
       restartPolicy: Never
-  backoffLimit: 4

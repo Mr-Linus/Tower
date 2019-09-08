@@ -41,5 +41,4 @@ class K8sList:
 
 
 if __name__ == '__main__':
-    k = K8S()
-    print(k.node_list())
+    pass

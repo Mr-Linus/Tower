@@ -45,7 +45,7 @@
                             <li class="active">
                                 <a href="/task"><i class="fa fa-inbox"></i> <span class="nav-label">任务管理</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li><a class="J_menuItem" href="">添加任务</a>
+                                    <li><a class="J_menuItem" href="/task/add">添加任务</a>
                                     </li>
                                 </ul>
                             </li>
@@ -159,7 +159,18 @@
                                                 </td>
                                             {% endif %}
                                             <td><i class="fa fa-clock-o"></i> {{ job.metadata.creation_timestamp }} </td>
-                                            <td><a href="/task/delete/{{ job.metadata.namespace }}/{{ job.metadata.name }}"><span class="label label-danger">删除</span></a></td>
+                                            <td>
+                                                <a href="/task/detail/{{ job.metadata.namespace }}/{{ job.metadata.name }}">
+                                                    <span class="label label-info">
+                                                        <i class="fa fa-eye"></i>
+                                                        查看
+                                                    </span>
+                                                </a>
+                                                &nbsp;
+                                                <a href="/task/delete/{{ job.metadata.namespace }}/{{ job.metadata.name }}">
+                                                    <span class="label label-danger">删除</span>
+                                                </a>
+                                            </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
