@@ -1,6 +1,6 @@
 from kubernetes import client, config
-
-
+from kubernetes.client.rest import ApiException
+from pprint import pprint
 class K8sTask:
     namespace = ''
     user = ''
@@ -47,6 +47,10 @@ class K8sTask:
         container = client.V1Container(
             name=name,
             image=image,
+            env=[client.V1EnvVar(
+                name='PYTHONUNBUFFERED',
+                value='0'
+            )],
             command=cmd,
             volume_mounts=[client.V1VolumeMount(
                 name=name+"-volume",
@@ -100,7 +104,8 @@ class K8sTask:
     def log_job(self, name):
         return client.CoreV1Api().read_namespaced_pod_log(
             name=self.get_pod_name_with_job(job_name=name),
-            namespace=self.namespace)
+            namespace=self.namespace,
+        )
 
     def info_job(self, name):
         return client.BatchV1Api().read_namespaced_job(
@@ -113,7 +118,13 @@ if __name__ == '__main__':
     k = K8sTask()
     k.user = 'root'
     k.namespace = 'test'
-    # k.create_namespace()
-    print(k.log_job('test123'))
+    k.create_namespace()
+    print()
+    # try:
+    #     api_response = k.log_job('test')
+    #     pprint(api_response)
+    # except ApiException as e:
+    #     print("Exception when calling CoreV1Api->read_namespaced_pod_log: %s\n" % e)
+
     # for ns in k.get_user_namespace():
     #     print(ns.metadata.name)

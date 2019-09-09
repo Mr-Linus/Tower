@@ -71,7 +71,6 @@ class CreateTaskView(LoginRequiredMixin, FormView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         cmd = form.cleaned_data['cmd'].split(' ')
-        print(cmd)
         k = K8sTask()
         k.user = self.request.user.username
         k.namespace = form.cleaned_data['namespace']
