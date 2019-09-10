@@ -9,6 +9,8 @@ A Machine Learning Task Management Platform Based on Kubernetes.
 ![Dash](https://github.com/NJUPT-ISL/Tower/blob/master/images/dash.png)
 - Task Management
 ![Task](https://github.com/NJUPT-ISL/Tower/blob/master/images/task.png)
+- Add Task
+![Add](https://github.com/NJUPT-ISL/Tower/blob/master/images/create.png)
 - Task Details
 ![Details](https://github.com/NJUPT-ISL/Tower/blob/master/images/details.png)
 - Namespace Management
