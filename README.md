@@ -6,13 +6,13 @@ A Machine Learning Task Management Platform Based on Kubernetes.
 - Use namespaces for task isolation.
 ## Overview
 - Dashboard
-![Dash](images/dash.png)
+![Dash](https://github.com/NJUPT-ISL/Tower/blob/master/images/dash.png)
 - Task Management
-![Task](images/task.png)
+![Task](https://github.com/NJUPT-ISL/Tower/blob/master/images/task.png)
 - Task Details
-![Details](images/details.png)
+![Details](https://github.com/NJUPT-ISL/Tower/blob/master/images/details.png)
 - Namespace Management
-![NS](images/ns.png)
+![NS](https://github.com/NJUPT-ISL/Tower/blob/master/images/ns.png)
 
 ## Quick Start 
 ### Development Test Environment
