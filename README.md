@@ -18,7 +18,7 @@ A Machine Learning Task Management Platform Based on Kubernetes.
 
 ## Quick Start 
 ### Development Test Environment
-- Python 3.6 (Recommend)
+- Python 3.7 (Recommend)
 - Django 2.1 (Necessary)
 - Kubernetes 1.15 (Recommend)
 
