@@ -154,6 +154,11 @@
                                             <td><a href="/task/namespace/delete/{{ ns.metadata.name }}"><span class="label label-danger">删除</span></a></td>
                                         </tr>
                                         {% endfor %}
+                                        {% if k.list_job is not null %}
+                                            <tr>
+                                                <td> 当前无命名空间。 </td>
+                                            </tr>
+                                        {% endif %}
                                     </tbody>
                                 </table>
                             </div>

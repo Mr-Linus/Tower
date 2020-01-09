@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'User.apps.UserConfig',
     'Dashboard.apps.DashboardConfig',
     'Task.apps.TaskConfig',
+    'Image.apps.ImageConfig',
     'bootstrap3',
 ]
 

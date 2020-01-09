@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('User.urls')),
     path('dashboard/', include('Dashboard.urls')),
     path('task/', include('Task.urls')),
+    path('image/', include('Image.urls')),
 ]

@@ -95,4 +95,3 @@ class DetailTaskView(LoginRequiredMixin, TemplateView):
         context['info'] = k.info_job(name=self.kwargs.get('name'))
         context['pod'] = k.get_pod_with_job(self.kwargs.get('name'))
         return context
-
