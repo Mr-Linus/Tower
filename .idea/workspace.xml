@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4ac29e3-0861-46a1-8cb0-3547832688a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Image/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Image/form.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/create.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/dash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/details.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/ns.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/task.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/addjob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/addjob.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Task/namespace.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/namespace.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Task/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/task.html" afterDir="false" />
     </list>
@@ -210,7 +204,7 @@
       <workItem from="1578399090094" duration="586000" />
       <workItem from="1578562277264" duration="890000" />
       <workItem from="1578563361561" duration="816000" />
-      <workItem from="1578564402372" duration="2919000" />
+      <workItem from="1578564402372" duration="7470000" />
     </task>
     <servers />
   </component>

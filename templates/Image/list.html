@@ -7,7 +7,7 @@
     <meta name="renderer" content="webkit">
 
 
-    <title>Tower-命名空间</title>
+    <title>Tower-镜像管理（Hound）</title>
 
     <link rel="shortcut icon" href="favicon.ico">
         {% load static %}
@@ -49,11 +49,11 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="active" >
-                                <a href="#"><i class="fa fa-space-shuttle"></i> <span class="nav-label">命名空间管理</span><span class="fa arrow"></span></a>
-                            </li>
                             <li>
-                                <a href="/image"><i class="fa fa-picture-o"></i> <span class="nav-label">镜像管理-Hound</span><span class="fa arrow"></span></a>
+                                <a href="/task/namespace"><i class="fa fa-space-shuttle"></i> <span class="nav-label">命名空间管理</span><span class="fa arrow"></span></a>
+                            </li>
+                            <li class="active">
+                                <a href="/image" class="active"><i class="fa fa-picture-o"></i> <span class="nav-label">镜像管理-Hound</span><span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li><a class="J_menuItem" href="">镜像列表</a>
                                     </li>
@@ -66,6 +66,10 @@
                         </ul>
                     </div>
             </nav>
+
+
+
+
         <div id="page-wrapper" class="gray-bg dashbard-1">
 
             <div class="row border-bottom">
@@ -104,20 +108,16 @@
                 </nav>
             </div>
 
-            <div class="row J_mainContent" style="overflow:auto" id="content-main">
+            <div class="row J_mainContent"  style="overflow:auto" id="content-main">
                <div class="wrapper wrapper-content">
-
-
         <div class="row">
-
-
             <div class="col-sm-12">
 
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>命名空间列表</h5>
+                                <h5>节点列表</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -132,63 +132,87 @@
                                     <thead>
                                         <tr>
 
-                                            <th>命名空间</th>
-                                            <th>创建日期</th>
-                                            <th>状态</th>
-                                            <th>UID</th>
+                                            <th>节点</th>
+                                            <th>角色</th>
+                                            <th>内核版本</th>
+                                            <th>操作系统</th>
+                                            <th>Docker</th>
+                                            <th>加入集群时间</th>
+                                            <th>信息更新时间</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for ns in k.get_user_namespace %}
+                                        {% for n in nodes %}
                                         <tr>
-                                            <td><span class="label label-info">{{ ns.metadata.name }}</span></td>
-                                            <td><i class="fa fa-clock-o"></i> {{ ns.metadata.creation_timestamp }} </td>
-                                            {% if ns.status.phase == 'Active' %}
-                                                <td><span class="label label-success">Active</span>
-                                                </td>
-                                            {% else %}
-                                                <td><span class="label label-warning">Inactive</span>
-                                                </td>
-                                            {% endif %}
-                                            <td><i class="fa"></i> {{ ns.metadata.uid }} </td>
-                                            <td><a href="/task/namespace/delete/{{ ns.metadata.name }}"><span class="label label-danger">删除</span></a></td>
+                                            <td>{{ n.Name }}</td>
+                                            <td class="text-navy"> <i class="fa"></i>{{ n.Role }}</td>
+                                            <td><i class="fa fa-dot-circle-o"></i> {{ n.KernelVersion }} </td>
+                                            <td><span class="label label-warning-light">{{ n.OperatingSystem }}</span></td>
+                                            <td><span class="label label-info">{{ n.DockerVersion }}</span></td>
+                                            <td><i class="fa fa-clock-o"> </i> {{ n.JoinTime }}</td>
+                                            <td><i class="fa fa-clock-o"> </i> {{ n.UpdateTime }}</td>
                                         </tr>
                                         {% endfor %}
-                                        {% if k.list_job is not null %}
-                                            <tr>
-                                                <td> 当前无命名空间。 </td>
-                                            </tr>
-                                        {% endif %}
                                     </tbody>
+                                    {% if k.list_job is not null %}
+                                            <tr>
+                                                <td> 当前无节点信息。 </td>
+                                            </tr>
+                                    {% endif %}
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
 
                 <div class="row">
-                <div class="col-sm-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>创建命名空间</h5>
-                        </div>
-                        <div>
-                            <div class="ibox-content no-padding border-left-right center-orientation">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>节点标签列表</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="ibox-content contact-box">
-                                    {% load bootstrap3 %}
-
-                                <form method="post">{% csrf_token %}
-                                    {% bootstrap_form form %}
-                                    {% buttons %}
-                                    <input type="submit" class="btn-primary" value="点击创建" />
-                                    {% endbuttons %}
-                                </form>
+                            <div class="ibox-content">
+                                <table class="table table-hover no-margins">
+                                    <thead>
+                                        <tr>
+                                            <th>节点</th>
+                                            <th>标签</th>
+                                            <th>创建标签时间</th>
+                                            <th>更新标签时间</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for l in labels %}
+                                        <tr>
+                                            <td>{{ l.Node }}</td>
+                                            <td class="text-navy"> <i class="fa"></i><span class="label label-primary">{{ l.Name }}</span></td>
+                                            <td><i class="fa fa-clock-o"> </i> {{ l.CreatedAt }}</td>
+                                            <td><i class="fa fa-clock-o"> </i> {{ l.UpdatedAt }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% if k.list_job is not null %}
+                                            <tr>
+                                                <td> 当前无标签。 </td>
+                                            </tr>
+                                    {% endif %}
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     </div>
