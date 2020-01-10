@@ -1,5 +1,5 @@
 requests
 urllib3
-django==2.1.15
+django==3.0.2
 django-bootstrap3==9.1.0
 kubernetes==10.0.1
