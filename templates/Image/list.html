@@ -117,7 +117,7 @@
                     <div class="col-sm-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>节点列表</h5>
+                                <h5>Hound节点列表</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -173,7 +173,7 @@
                     <div class="col-sm-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>节点标签列表</h5>
+                                <h5>Hound标签列表</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -213,6 +213,33 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>快速拉取镜像</h5>
+                        </div>
+                        <div>
+                            <div class="ibox-content no-padding border-left-right center-orientation">
+                            </div>
+                            <div class="ibox-content profile-content">
+                                {% load bootstrap3 %}
+
+                                <form method="post">{% csrf_token %}
+                                    {% bootstrap_form form %}
+                                    {% buttons %}
+                                    <input type="submit" class="btn-primary" value="点击创建" />
+                                    {% endbuttons %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
