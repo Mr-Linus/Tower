@@ -8,3 +8,4 @@ class CreatePullForm(forms.Form):
         help_text="容器镜像的名称，例如：helloworld:latest",
         required=True
     )
+
