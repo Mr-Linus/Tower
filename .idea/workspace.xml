@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4ac29e3-0861-46a1-8cb0-3547832688a9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Image/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Image/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/k8s.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/k8s.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Task/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/views.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,6 +43,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1Q6NARUVpRLsInAJE7voXiRYfiP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -52,18 +59,6 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="web.server" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Django server.Tower">
     <configuration name="Lists" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -197,7 +192,13 @@
       <workItem from="1578562277264" duration="890000" />
       <workItem from="1578563361561" duration="816000" />
       <workItem from="1578564402372" duration="7880000" />
-      <workItem from="1578632889107" duration="1292000" />
+      <workItem from="1578632889107" duration="1383000" />
+      <workItem from="1578646449580" duration="4371000" />
+      <workItem from="1578669092412" duration="631000" />
+      <workItem from="1578707785645" duration="2561000" />
+      <workItem from="1578744495872" duration="300000" />
+      <workItem from="1578887037777" duration="107000" />
+      <workItem from="1580282860270" duration="39000" />
     </task>
     <servers />
   </component>
@@ -216,6 +217,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="484" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1580718874671">
+      <screen x="0" y="23" width="1624" height="1027" />
+    </state>
+    <state x="484" y="369" key="com.intellij.ide.util.TipDialog/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580718874671" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tower$Lists.coverage" NAME="Lists Coverage Results" MODIFIED="1567243846779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Dashboard" />

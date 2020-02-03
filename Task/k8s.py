@@ -1,6 +1,8 @@
 from kubernetes import client, config
 from kubernetes.client.rest import ApiException
 from pprint import pprint
+
+
 class K8sTask:
     namespace = ''
     user = ''
@@ -66,13 +68,18 @@ class K8sTask:
         template = client.V1PodTemplateSpec(
             metadata=client.V1ObjectMeta(name=name, labels={"user": self.user}),
             spec=client.V1PodSpec(
+                # 重启策略
                 restart_policy="Never",
                 containers=[container],
                 volumes=[volume],
             )
         )
         spec = client.V1JobSpec(
-            template=template
+            template=template,
+            # 并行数
+            parallelism=1,
+            # 失败重启数
+            backoff_limit=0,
         )
         job = client.V1Job(
             api_version="batch/v1",

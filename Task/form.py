@@ -22,19 +22,15 @@ class CreateJobForm(forms.Form):
         help_text="输入你创建好的命名空间的名字。"
     )
     image = forms.CharField(
-        max_length=40,
+        max_length=80,
         label="Image",
         help_text="镜像名称。"
     )
-    path = forms.CharField(
-        max_length=40,
-        label="Path",
-        help_text="代码存放的路径。"
-    )
     cmd = forms.CharField(
-        max_length=40,
+        max_length=140,
         label="Command",
-        help_text="执行的命令。"
+        help_text="执行的命令。",
+        required=False
     )
 
 

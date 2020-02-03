@@ -78,7 +78,7 @@ class CreateTaskView(LoginRequiredMixin, FormView):
             name=form.cleaned_data['name'],
             image=form.cleaned_data['image'],
             cmd=cmd,
-            path=form.cleaned_data['path'],
+            path="/gf/"+self.request.user,
         )
         return super().form_valid(form)
 
