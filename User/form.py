@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class CreationForm(UserCreationForm):
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -18,3 +19,4 @@ class CreationForm(UserCreationForm):
                   'email',
                   'QQ',
                   ]
+

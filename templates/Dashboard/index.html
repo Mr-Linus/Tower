@@ -27,44 +27,7 @@
          <nav class="navbar-default navbar-static-side" role="navigation">
                     <div class="nav-close"><i class="fa fa-times-circle"></i>
                     </div>
-                    <div class="sidebar-collapse">
-                        <ul class="nav" id="side-menu">
-
-                            <li class="nav-header">
-                                <div class="dropdown profile-element">
-                                    <span><img alt="image" class="img-circle" src="/static/img/profile_small.jpg" /></span>
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="clear">
-                                       <span class="block m-t-xs"><strong class="font-bold">{{ user }}</strong></span>
-                                        <span class="text-muted text-xs block">超级管理员</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="/task"><i class="fa fa-inbox"></i> <span class="nav-label">任务管理</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li><a class="J_menuItem" href="/task/add">添加任务</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="/task/namespace"><i class="fa fa-space-shuttle"></i> <span class="nav-label">命名空间管理</span><span class="fa arrow"></span></a>
-                            </li>
-                            <li>
-                                <a href="/image"><i class="fa fa-picture-o"></i> <span class="nav-label">镜像管理-Hound </span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li><a class="J_menuItem" href="#">镜像构建</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="/image/label">镜像标签</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="">节点信息</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    {% include 'base.html' %}
             </nav>
 
 
@@ -147,7 +110,7 @@
                         <h5>正在运行的任务数</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">{{ k.job_num }}</h1>
+                        <h1 class="no-margins">{{ task_len }}</h1>
 {#                        <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i>#}
 {#                        </div>#}
 {#                        <small>新访客</small>#}
@@ -201,24 +164,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for job in k.job_list %}
+                                        {% if task_len == 0 %}
+                                            <tr>
+                                                <td> 当前无任务。 </td>
+                                            </tr>
+                                        {% endif %}
+                                        {% for job in jobs %}
                                         <tr>
                                             <td>{{ job.metadata.namespace }}</td>
                                             <td class="text-navy"> <i class="fa"></i>{{ job.metadata.name }}</td>
-                                            {% if job.status.active == 1 and job.status.succeeded == None %}
+                                            {% if job.status.phase == 'Running' %}
                                                 <td><span class="label label-warning">正在运行</span>
                                                 </td>
-                                            {% elif job.status.failed == 1 %}
-                                                <td><span class="label label-warning">执行失败</span>
+                                           {% elif job.status.phase == 'Pending' %}
+                                                <td><span class="label label-warning">Pending</span>
                                                 </td>
-                                            {% elif job.status.succeeded == 1 %}
+                                            {% elif job.status.phase == 'Succeeded' %}
                                                 <td><span class="label label-success">执行成功</span>
                                                 </td>
+                                            {% else %}
+                                                <td><span class="label label-danger">未知状态</span>
                                             {% endif %}
-                                            <td><i class="fa fa-clock-o"></i> {{ job.metadata.creation_timestamp }} </td>
+                                            <td><i class="fa fa-clock-o"></i> {{ job.metadata.creationTimestamp }} </td>
                                         </tr>
                                         {% endfor %}
+
                                     </tbody>
+
                                 </table>
                             </div>
                         </div>

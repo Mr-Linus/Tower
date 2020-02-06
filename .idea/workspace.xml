@@ -2,10 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4ac29e3-0861-46a1-8cb0-3547832688a9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Service/Service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/form.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Service/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tower_uwsgi.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/config-map.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/deployments.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/namespace.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deploy/statuefulsets.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx.Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/Service/service.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard/lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard/lists.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/form.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/k8s.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/k8s.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tower/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tower/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Dashboard/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Image/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Image/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/addjob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/addtask.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/namespace.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/namespace.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Task/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/task.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/User/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User/sign-up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +65,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>
@@ -49,7 +80,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/Service" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,6 +93,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="web.server" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/Service" />
+    </key>
   </component>
   <component name="RunManager" selected="Django server.Tower">
     <configuration name="Lists" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -75,6 +114,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Dashboard/lists.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Tower" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Service" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Service/Service.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -131,6 +192,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Service" />
         <item itemvalue="Python.k8s" />
         <item itemvalue="Python.Lists" />
       </list>
@@ -199,6 +261,16 @@
       <workItem from="1578744495872" duration="300000" />
       <workItem from="1578887037777" duration="107000" />
       <workItem from="1580282860270" duration="39000" />
+      <workItem from="1580718872667" duration="9473000" />
+      <workItem from="1580734238866" duration="5445000" />
+      <workItem from="1580804417806" duration="1143000" />
+      <workItem from="1580805991848" duration="65000" />
+      <workItem from="1580806448757" duration="4107000" />
+      <workItem from="1580827694820" duration="544000" />
+      <workItem from="1580828257293" duration="2246000" />
+      <workItem from="1580930874815" duration="886000" />
+      <workItem from="1580977527371" duration="12703000" />
+      <workItem from="1581004284434" duration="2358000" />
     </task>
     <servers />
   </component>
@@ -219,13 +291,53 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="484" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1580718874671">
-      <screen x="0" y="23" width="1624" height="1027" />
+    <state width="1572" height="305" key="GridCell.Tab.0.bottom" timestamp="1581004122424">
+      <screen x="0" y="23" width="1614" height="1027" />
     </state>
-    <state x="484" y="369" key="com.intellij.ide.util.TipDialog/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580718874671" />
+    <state width="1572" height="305" key="GridCell.Tab.0.bottom/0.23.1614.1027/-1920.-154.1920.1057@0.23.1614.1027" timestamp="1581004122424" />
+    <state width="1572" height="305" key="GridCell.Tab.0.bottom/0.23.1617.1027/-1920.-154.1920.1057@0.23.1617.1027" timestamp="1581002117806" />
+    <state width="1572" height="305" key="GridCell.Tab.0.bottom/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580828661423" />
+    <state width="1572" height="305" key="GridCell.Tab.0.bottom/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580830600221" />
+    <state width="1572" height="304" key="GridCell.Tab.0.bottom/0.23.1626.1027/-1920.-154.1920.1057@0.23.1626.1027" timestamp="1580735764882" />
+    <state width="1572" height="305" key="GridCell.Tab.0.center" timestamp="1581004122423">
+      <screen x="0" y="23" width="1614" height="1027" />
+    </state>
+    <state width="1572" height="305" key="GridCell.Tab.0.center/0.23.1614.1027/-1920.-154.1920.1057@0.23.1614.1027" timestamp="1581004122423" />
+    <state width="1572" height="305" key="GridCell.Tab.0.center/0.23.1617.1027/-1920.-154.1920.1057@0.23.1617.1027" timestamp="1581002117805" />
+    <state width="1572" height="305" key="GridCell.Tab.0.center/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580828661422" />
+    <state width="1572" height="305" key="GridCell.Tab.0.center/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580830600220" />
+    <state width="1572" height="304" key="GridCell.Tab.0.center/0.23.1626.1027/-1920.-154.1920.1057@0.23.1626.1027" timestamp="1580735764881" />
+    <state width="1572" height="305" key="GridCell.Tab.0.left" timestamp="1581004122423">
+      <screen x="0" y="23" width="1614" height="1027" />
+    </state>
+    <state width="1572" height="305" key="GridCell.Tab.0.left/0.23.1614.1027/-1920.-154.1920.1057@0.23.1614.1027" timestamp="1581004122423" />
+    <state width="1572" height="305" key="GridCell.Tab.0.left/0.23.1617.1027/-1920.-154.1920.1057@0.23.1617.1027" timestamp="1581002117805" />
+    <state width="1572" height="305" key="GridCell.Tab.0.left/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580828661421" />
+    <state width="1572" height="305" key="GridCell.Tab.0.left/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580830600219" />
+    <state width="1572" height="304" key="GridCell.Tab.0.left/0.23.1626.1027/-1920.-154.1920.1057@0.23.1626.1027" timestamp="1580735764880" />
+    <state width="1572" height="305" key="GridCell.Tab.0.right" timestamp="1581004122424">
+      <screen x="0" y="23" width="1614" height="1027" />
+    </state>
+    <state width="1572" height="305" key="GridCell.Tab.0.right/0.23.1614.1027/-1920.-154.1920.1057@0.23.1614.1027" timestamp="1581004122424" />
+    <state width="1572" height="305" key="GridCell.Tab.0.right/0.23.1617.1027/-1920.-154.1920.1057@0.23.1617.1027" timestamp="1581002117806" />
+    <state width="1572" height="305" key="GridCell.Tab.0.right/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580828661422" />
+    <state width="1572" height="305" key="GridCell.Tab.0.right/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580830600220" />
+    <state width="1572" height="304" key="GridCell.Tab.0.right/0.23.1626.1027/-1920.-154.1920.1057@0.23.1626.1027" timestamp="1580735764882" />
+    <state x="481" y="369" key="com.intellij.ide.util.TipDialog" timestamp="1580977528851">
+      <screen x="0" y="23" width="1614" height="1027" />
+    </state>
+    <state x="481" y="369" key="com.intellij.ide.util.TipDialog/0.23.1614.1027/-1920.-154.1920.1057@0.23.1614.1027" timestamp="1580977528851" />
+    <state x="482" y="369" key="com.intellij.ide.util.TipDialog/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580827697145" />
+    <state x="483" y="369" key="com.intellij.ide.util.TipDialog/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1580806450140" />
+    <state x="485" y="369" key="com.intellij.ide.util.TipDialog/0.23.1628.1027/-1920.-154.1920.1057@0.23.1628.1027" timestamp="1580930874842" />
+    <state x="472" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1580737293027">
+      <screen x="0" y="23" width="1619" height="1027" />
+    </state>
+    <state x="472" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1580737293026" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Tower$Lists.coverage" NAME="Lists Coverage Results" MODIFIED="1567243846779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Dashboard" />
-    <SUITE FILE_PATH="coverage/Tower$k8s.coverage" NAME="k8s Coverage Results" MODIFIED="1567956015080" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Task" />
+    <SUITE FILE_PATH="coverage/Tower$k8s.coverage" NAME="k8s Coverage Results" MODIFIED="1580739842259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Task" />
+    <SUITE FILE_PATH="coverage/Tower$Service.coverage" NAME="Service Coverage Results" MODIFIED="1580985358082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Service" />
   </component>
 </project>

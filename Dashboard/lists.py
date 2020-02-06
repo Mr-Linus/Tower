@@ -40,5 +40,96 @@ class K8sList:
         return None
 
 
+class BreadTask:
+    group = 'core.run-linux.com'
+    version = 'v1alpha1'
+
+    def __init__(self):
+        config.load_kube_config()
+        self.api = client.CustomObjectsApi()
+
+    def Creat_Bread(self, name, namespace, gpu, mem, level,
+                    framework, version, task_type, path, command):
+        body = {
+            "apiVersion": "core.run-linux.com/v1alpha1",
+            "kind": "Bread",
+            "metadata": {
+                "name": name,
+                "namespace": namespace,
+            },
+            "spec": {
+                "scv": {
+                    "gpu": gpu,
+                    "memory": mem,
+                    "level": level,
+                },
+                "framework": {
+                    "name": framework,
+                    "version": version
+                },
+                "task": {
+                    "type": task_type,
+                    "path": path,
+                    "command": command
+                }
+            }
+        }
+        self.api.create_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            body=body,
+        )
+
+    def Get_Bread(self, name, namespace):
+        return self.api.get_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name
+        )
+
+    def Get_Bread_Status(self, name, namespace):
+        return self.api.get_namespaced_custom_object_status(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name
+        )["status"]
+
+    def Delete_Bread(self, name, namespace):
+        self.api.delete_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name,
+            body=client.V1DeleteOptions(),
+        )
+
+    def List_Bread(self, namespace):
+        return self.api.list_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+        )['items']
+
+    def Get_Pod_Logs(self, name, namespace):
+        return client.CoreV1Api().read_namespaced_pod_log(
+            name=name,
+            namespace=namespace,
+        )
+
+    def Get_Pod_Info(self, name, namespace):
+        return client.CoreV1Api().read_namespaced_pod(
+            name=name,
+            namespace=namespace,
+        )
+
+
 if __name__ == '__main__':
     pass

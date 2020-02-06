@@ -48,17 +48,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4 col-md-push-8">
-					
+
 
 					<!-- Start Sign In Form -->
 					<form action="" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInRight">
 						<h2>Sign Up</h2>
-                        <!--
-						<div class="form-group">
-							<div class="alert alert-success" role="alert">Your info has been saved.</div>
-						</div>-->
-						{% csrf_token %}
                         {% load bootstrap3 %}
+                        {% csrf_token %}
                         {% bootstrap_form add_form %}
 						<div class="form-group">
 							<input type="submit" value="Sign Up" class="btn btn-primary">

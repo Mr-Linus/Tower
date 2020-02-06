@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
 from django.views.generic.base import TemplateView
-from Task.k8s import K8sTask
+from Task.k8s import K8sTask, BreadTask
 from Task.form import CreateNamespaceForm, CreateJobForm
 import time
 # Create your views here.
@@ -18,14 +18,16 @@ class NamespaceView(LoginRequiredMixin, FormView):
         k.user = self.request.user.username
         context = super().get_context_data(**kwargs)
         context['k'] = k
+        context['len'] = len(k.get_user_namespace())
         return context
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
+        # TODO: The Namespace function will be remove
         k = K8sTask()
         k.user = self.request.user.username
-        k.namespace = form.cleaned_data['namespace']
+        k.namespace = self.request.user.username
         k.create_namespace()
         return super().form_valid(form)
 
@@ -43,10 +45,9 @@ class TaskView(LoginRequiredMixin, TemplateView):
     template_name = 'Task/task.html'
 
     def get_context_data(self, **kwargs):
-        k = K8sTask()
-        k.user = self.request.user.username
         context = super().get_context_data(**kwargs)
-        context['k'] = k
+        context['tasks'] = BreadTask().List_Bread(self.request.user.username)
+        context['len'] = len(context['tasks'])
         return context
 
 
@@ -54,44 +55,55 @@ class DeleteTaskView(LoginRequiredMixin, TemplateView):
     template_name = "Task/task.html"
 
     def get(self, request, *args, **kwargs):
-        k = K8sTask()
-        k.user = self.request.user.username
-        k.namespace = self.kwargs.get('namespace')
-        k.delete_job(self.kwargs.get('name'))
+        BreadTask().Delete_Bread(
+            namespace=self.kwargs.get('namespace'),
+            name=self.kwargs.get('name'))
         time.sleep(1)
         return redirect("/task")
 
 
 class CreateTaskView(LoginRequiredMixin, FormView):
-    template_name = "Task/addjob.html"
+    template_name = "Task/addtask.html"
     form_class = CreateJobForm
     success_url = "/task"
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-        cmd = form.cleaned_data['cmd'].split(' ')
-        k = K8sTask()
-        k.user = self.request.user.username
-        k.namespace = form.cleaned_data['namespace']
-        k.create_job(
+        # k = K8sTask()
+        # k.user = self.request.user.username
+        # k.namespace = form.cleaned_data['namespace']
+        # k.create_job(
+        #     name=form.cleaned_data['name'],
+        #     image=form.cleaned_data['image'],
+        #     cmd=cmd,
+        #     path="/gf/"+self.request.user,
+        # )
+        BreadTask().Creat_Bread(
             name=form.cleaned_data['name'],
-            image=form.cleaned_data['image'],
-            cmd=cmd,
-            path="/gf/"+self.request.user,
+            namespace=self.request.user.username,
+            gpu=form.cleaned_data['gpu'],
+            mem=form.cleaned_data['memory'],
+            level=form.cleaned_data['level'],
+            command=form.cleaned_data['cmd'],
+            framework=form.cleaned_data['framework'],
+            version=form.cleaned_data['version'],
+            task_type=form.cleaned_data['type'],
+            path=self.request.user.username
         )
         return super().form_valid(form)
 
 
+# TODO: Need to Fix
 class DetailTaskView(LoginRequiredMixin, TemplateView):
     template_name = "Task/detail.html"
 
     def get_context_data(self, **kwargs):
-        k = K8sTask()
-        k.user = self.request.user.username
-        k.namespace = self.kwargs.get('namespace')
+        b = BreadTask()
         context = super().get_context_data(**kwargs)
-        context['result'] = k.log_job(name=self.kwargs.get('name'))
-        context['info'] = k.info_job(name=self.kwargs.get('name'))
-        context['pod'] = k.get_pod_with_job(self.kwargs.get('name'))
+        context['pod'] = b.Get_Pod_Info(name=self.kwargs.get('name'),
+                                        namespace=self.request.user.username)
+        context['result'] = b.Get_Pod_Logs(name=self.kwargs.get('name'),
+                                           namespace=self.request.user.username)
         return context
+

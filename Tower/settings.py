@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't(ua0r@6l+s*@_7d+_2mv$g#!nj_(#wfgsc+r9h6i!vtb1-bi5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*', ]
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Dashboard.apps.DashboardConfig',
     'Task.apps.TaskConfig',
     'Image.apps.ImageConfig',
+    'Service.apps.ServiceConfig',
     'bootstrap3',
 ]
 
@@ -123,10 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 LOGIN_URL = '/login/'
 

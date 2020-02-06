@@ -1,6 +1,4 @@
 from kubernetes import client, config
-from kubernetes.client.rest import ApiException
-from pprint import pprint
 
 
 class K8sTask:
@@ -55,12 +53,12 @@ class K8sTask:
             )],
             command=cmd,
             volume_mounts=[client.V1VolumeMount(
-                name=name+"-volume",
+                name=name + "-volume",
                 mount_path="/root",
             )]
         )
         volume = client.V1Volume(
-            name=name+"-volume",
+            name=name + "-volume",
             host_path=client.V1HostPathVolumeSource(
                 path=path,
             )
@@ -117,16 +115,110 @@ class K8sTask:
     def info_job(self, name):
         return client.BatchV1Api().read_namespaced_job(
             name=name,
-            namespace=self.namespace
+            namespace=self.namespace,
+        )
+
+
+class BreadTask:
+    group = 'core.run-linux.com'
+    version = 'v1alpha1'
+
+    def __init__(self):
+        config.load_kube_config()
+        self.api = client.CustomObjectsApi()
+        self.coreApi = client.CoreV1Api()
+
+    def Creat_Bread(self, name, namespace, gpu, mem, level,
+                    framework, version, task_type, path, command):
+        body={
+            "apiVersion": "core.run-linux.com/v1alpha1",
+            "kind": "Bread",
+            "metadata": {
+                "name": name,
+                "namespace": namespace,
+            },
+            "spec": {
+                "scv": {
+                    "gpu": gpu,
+                    "memory": mem,
+                    "level": level,
+                },
+                "framework": {
+                    "name": framework,
+                    "version": version
+                },
+                "task": {
+                    "type": task_type,
+                    "path": path,
+                    "command": command
+                }
+            }
+        }
+        self.api.create_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            body=body,
+        )
+
+    def Get_Bread(self, name, namespace):
+        return self.api.get_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name
+        )
+
+    def Get_Bread_Status(self, name, namespace):
+        return self.api.get_namespaced_custom_object_status(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name
+        )["status"]
+
+    def Delete_Bread(self, name, namespace):
+        self.api.delete_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+            name=name,
+            body=client.V1DeleteOptions(),
+        )
+
+    def List_Bread(self, namespace):
+        return self.api.list_namespaced_custom_object(
+            group=self.group,
+            version=self.version,
+            namespace=namespace,
+            plural="breads",
+        )['items']
+
+    def Get_Pod_Logs(self, name, namespace):
+        return self.coreApi.read_namespaced_pod_log(
+            name=name,
+            namespace=namespace,
+        )
+
+    def Get_Pod_Info(self, name, namespace):
+        return self.coreApi.read_namespaced_pod(
+            name=name,
+            namespace=namespace,
         )
 
 
 if __name__ == '__main__':
-    k = K8sTask()
-    k.user = 'root'
-    k.namespace = 'test'
-    k.create_namespace()
-    print()
+    # k = K8sTask()
+    # k.user = 'root'
+    # k.namespace = 'test'
+    # k.create_namespace()
+    # b = BreadTask()
+
+    print(BreadTask().List_Bread("root"))
     # try:
     #     api_response = k.log_job('test')
     #     pprint(api_response)

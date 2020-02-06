@@ -11,4 +11,6 @@ class DashboardIndexView(LoginRequiredMixin, TemplateView):
         k = lists.K8sList()
         context = super().get_context_data(**kwargs)
         context['k'] = k
+        context['task_len'] = len(lists.BreadTask().List_Bread(self.request.user.username))
+        context['jobs'] = lists.BreadTask().List_Bread(self.request.user.username)
         return context

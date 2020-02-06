@@ -27,44 +27,7 @@
          <nav class="navbar-default navbar-static-side" role="navigation">
                     <div class="nav-close"><i class="fa fa-times-circle"></i>
                     </div>
-                    <div class="sidebar-collapse">
-                        <ul class="nav" id="side-menu">
-
-                            <li class="nav-header">
-                                <div class="dropdown profile-element">
-                                    <span><img alt="image" class="img-circle" src="/static/img/profile_small.jpg" /></span>
-                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                        <span class="clear">
-                                       <span class="block m-t-xs"><strong class="font-bold">{{ user }}</strong></span>
-                                        <span class="text-muted text-xs block">超级管理员</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </li>
-
-                            <li>
-                                <a href="/task"><i class="fa fa-inbox"></i> <span class="nav-label">任务管理</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li><a class="J_menuItem" href="/task/add">添加任务</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="/task/namespace"><i class="fa fa-space-shuttle"></i> <span class="nav-label">命名空间管理</span><span class="fa arrow"></span></a>
-                            </li>
-                            <li class="active">
-                                <a href="/image" class="active"><i class="fa fa-picture-o"></i> <span class="nav-label">镜像管理-Hound</span><span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li><a class="J_menuItem" href="">镜像列表</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="">添加镜像</a>
-                                    </li>
-                                    <li><a class="J_menuItem" href="">登录日志</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                    {% include 'base.html' %}
             </nav>
 
 
