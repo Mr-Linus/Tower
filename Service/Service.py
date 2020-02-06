@@ -3,7 +3,7 @@ from kubernetes import client, config
 
 class Service:
     def __init__(self):
-        config.load_kube_config()
+        config.load_incluster_config()
         self.api = client.CustomObjectsApi()
         self.coreApi = client.CoreV1Api()
 

@@ -2,40 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4ac29e3-0861-46a1-8cb0-3547832688a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Service/Service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/form.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Service/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tower_uwsgi.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/config-map.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/deployments.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/namespace.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/service.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/statuefulsets.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx.Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/Service/service.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dashboard/lists.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard/lists.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dashboard/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Service/Service.py" beforeDir="false" afterPath="$PROJECT_DIR$/Service/Service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Task/k8s.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/k8s.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tower/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tower/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/User/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Dashboard/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Dashboard/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Image/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Image/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Task/addjob.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/addtask.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Task/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Task/namespace.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/namespace.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Task/task.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Task/task.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/User/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/User/sign-up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +239,7 @@
       <workItem from="1580828257293" duration="2246000" />
       <workItem from="1580930874815" duration="886000" />
       <workItem from="1580977527371" duration="12703000" />
-      <workItem from="1581004284434" duration="2358000" />
+      <workItem from="1581004284434" duration="2634000" />
     </task>
     <servers />
   </component>

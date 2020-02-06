@@ -6,7 +6,7 @@ class K8sTask:
     user = ''
 
     def __init__(self):
-        config.load_kube_config()
+        config.load_incluster_config()
 
     def get_user_namespace(self):
         namespace = []
@@ -124,7 +124,7 @@ class BreadTask:
     version = 'v1alpha1'
 
     def __init__(self):
-        config.load_kube_config()
+        config.load_incluster_config()
         self.api = client.CustomObjectsApi()
         self.coreApi = client.CoreV1Api()
 
