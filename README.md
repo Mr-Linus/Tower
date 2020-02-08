@@ -1,8 +1,10 @@
 # Tower
-A Machine Learning Task Management Platform Based on Kubernetes.
+A machine learning task management 
+platform based on Kubernetes that implements the management of the Machine 
+Learning tasks life cycle by Breakfast.
 ## Features
 - View cluster status, tasks.
-- Manage deep learning tasks.
+- Manage Machine Learning tasks.
 - Use namespaces for task isolation.
 ## Overview
 - Dashboard
@@ -19,8 +21,8 @@ A Machine Learning Task Management Platform Based on Kubernetes.
 ## Quick Start 
 ### Development Test Environment
 - Python 3.7 (Recommend)
-- Django 2.1 (Necessary)
-- Kubernetes 1.15 (Recommend)
+- Django 2.2 (Necessary)
+- Kubernetes 1.15+ (Recommend)
 
 ### Install dependencies
 ```shell script
