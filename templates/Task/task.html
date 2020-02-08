@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+
+    <title>Tower-任务管理</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+        {% load static %}
+    <link href="{% static "css/bootstrap.min.css"%}"  rel="stylesheet">
+    <link href="{% static "css/font-awesome.min.css"%}"  rel="stylesheet">
+    <link href="{% static "css/animate.min.css"%}"  rel="stylesheet">
+    <link href="{% static "css/style.min.css"%}"  rel="stylesheet">
+
+<!-- css file -->
+
+
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+
+         <nav class="navbar-default navbar-static-side" role="navigation">
+                    <div class="nav-close"><i class="fa fa-times-circle"></i>
+                    </div>
+                    {% include 'base.html' %}
+            </nav>
+
+
+
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="/dashboard"><i class="fa fa-home"></i> </a>
+                    </div>
+
+                        <ul class="nav navbar-top-links navbar-right">
+
+                            <li class="dropdown">
+                                <a class="count-info" href="#">
+                                    <span class="m-r-sm text-muted welcome-message">帮助</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="m-r-sm text-muted welcome-message">
+                                        <img alt="image" class="img-circle" width="30" height="30" src="/static/img/a5.jpg"/>
+                                        <span style="font-size: 13px;font-weight: 400"> {{ user }}
+                                            <b class="caret"></b>
+                                        </span>
+                                    </span>
+                                </a>
+                                <!--<ul class="dropdown-menu animated fadeInRight m-t-xs profile-dropdown">-->
+                                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                                    <li><a href=""><i class="fa fa-cogs"> </i><span> 个人信息</span></a></li>
+                                     <li><a id="switch_user"><i class="fa fa-exchange"></i><span> 用户页面</span></a></li>
+                                    <li><a href="/logout"><i class="fa fa-sign-out"></i> 注销登录</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                </nav>
+            </div>
+
+            <div class="row J_mainContent"  style="overflow:auto" id="content-main">
+               <div class="wrapper wrapper-content">
+        <div class="row">
+
+
+            <div class="col-sm-12">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>任务列表</h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <table class="table table-hover no-margins">
+                                    <thead>
+                                        <tr>
+                                            <th>任务名称</th>
+                                            <th>命名空间</th>
+                                            <th>机器学习框架</th>
+                                            <th>GPU 资源与性能信息</th>
+                                            <th>任务类型</th>
+                                            <th>状态</th>
+                                            <th>日期</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for task in tasks %}
+                                        <tr>
+                                            <td class="text-navy"> {{ task.metadata.name }}</td>
+                                            <td>{{ task.metadata.namespace }}</td>
+                                            <td>{{ task.spec.framework.name }}-{{ task.spec.framework.version }}</td>
+                                            <td>GPU:{{ task.spec.scv.gpu }} {{ task.spec.scv.level }} 显存:{{ task.spec.scv.memory }}MB</td>
+                                            <td > <i class="fa fa-tag"> <span class="label label-info">{{ task.spec.task.type }}</span></i></td>
+                                            {% if task.status.phase == 'Running' %}
+                                                <td><span class="label label-default">正在运行</span>
+                                                </td>
+                                            {% elif task.status.phase == 'Pending' %}
+                                                <td><span class="label label-warning">Pending</span>
+                                                </td>
+                                            {% elif task.status.phase == 'Succeeded' %}
+                                                <td><span class="label label-success">执行成功</span>
+                                                </td>
+                                            {% else %}
+                                                <td><span class="label label-danger">未知状态</span>
+                                                </td>
+                                            {% endif %}
+                                            <td><i class="fa fa-clock-o"></i> {{ task.metadata.creationTimestamp }} </td>
+                                            <td>
+                                                {% if task.status.phase == 'Running' %}
+                                                <a href="/task/detail/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
+                                                    <span class="label label-info">
+                                                        <i class="fa fa-eye"></i>
+                                                        查看
+                                                    </span>
+                                                </a>
+                                                &nbsp;
+                                                {% endif %}
+                                                <a href="/task/delete/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
+                                                    <span class="label label-danger">删除</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {% if len == 0 %}
+                                            <tr>
+                                                <td> 当前无任务。 </td>
+                                            </tr>
+                                    {% endif %}
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+            <div class="footer fixed">
+                <div class="pull-right">
+                    Version <strong>0.0.1</strong>
+                </div>
+                <div>
+                    <strong>Copyright</strong> Tower &copy; 2019
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="{% static "js/jquery.min.js"%}"></script>
+    <script src="{% static "js/bootstrap.min.js"%}"></script>
+    <script src="{% static "js/plugins/metisMenu/jquery.metisMenu.js"%}"></script>
+    <script src="{% static "js/plugins/slimscroll/jquery.slimscroll.min.js" %}"></script>
+    <script src="{% static "js/hplus.min.js"%}"></script>
+
+    <script type="text/javascript" src="{% static "js/contabs.min.js"%}"></script>
+    <script src="{% static "js/plugins/pace/pace.min.js" %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: tower-nginx
+  namespace: tower
+spec:
+    selector:
+      app: tower-nginx
+    ports:
+      - name: http
+        protocol: TCP
+        port: 80
+        targetPort: 80
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: tower-backend
+  namespace: tower
+spec:
+    sessionAffinity: ClientIP
+    selector:
+      app: tower-backend
+    ports:
+      - name: backend
+        protocol: TCP
+        port: 8000
+        targetPort: 8000

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Qbus集群管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+
+<!-- css file -->
+    <link href="css/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/style.min.css?v=4.0.0" rel="stylesheet">
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                               <span class="block m-t-xs"><strong class="font-bold">zoujiangtao</strong></span>
+                                <span class="text-muted text-xs block">超级管理员</span>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Qbus集群管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="form_advanced.html">Qbus集群列表</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_validate.html">日志收集状态</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_advanced.html">Host && Topic查询</a>
+                            </li>
+                            <li><a class="J_menuItem" href="form_wizard.html">Topic流量日报</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">定时管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="table_basic.html">基本表格</a>
+                            </li>
+                            <li><a class="J_menuItem" href="table_data_tables.html">DataTables</a>
+                            </li>
+                            <li><a class="J_menuItem" href="table_jqgrid.html">jqGrid</a>
+                            </li>
+                            <li><a class="J_menuItem" href="table_foo_table.html">Foo Tables</a>
+                            </li>
+                            <li><a class="J_menuItem" href="table_bootstrap.html">Bootstrap Table
+                                <span class="label label-danger pull-right">推荐</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">用户管理</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="basic_gallery.html">用户列表</a>
+                            </li>
+                            <li><a class="J_menuItem" href="carousel.html">用户组</a>
+                            </li>
+                            <li><a class="J_menuItem" href="layerphotos.html">登录日志</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-cutlery"></i> <span class="nav-label">设置管理 </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="form_builder.html">表单构建器</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+
+                        <ul class="nav navbar-top-links navbar-right">
+
+                            <li class="dropdown">
+                                <a class="count-info" href="#">
+                                    <span class="m-r-sm text-muted welcome-message">帮助</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                    <span class="m-r-sm text-muted welcome-message">
+                                        <img alt="image" class="img-circle" width="30" height="30" src="img/a5.jpg"/>
+                                        <span style="font-size: 13px;font-weight: 400"> Administrator
+                                            <b class="caret"></b>
+                                        </span>
+                                    </span>
+                                </a>
+                                <!--<ul class="dropdown-menu animated fadeInRight m-t-xs profile-dropdown">-->
+                                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="/users/profile/"><i class="fa fa-cogs"> </i><span> 个人信息</span></a></li>
+                                     <li><a id="switch_user"><i class="fa fa-exchange"></i><span> 用户页面</span></a></li>
+                                    <li><a href="/users/logout/"><i class="fa fa-sign-out"></i> 注销登录</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                </nav>
+        </div>
+    </div>
+
+
+    <div class="footer fixed">
+    <div class="pull-right">
+        Version <strong>1.4.0-2</strong> GPLv2.
+        <!--<img style="display: none" src="http://www.jumpserver.org/img/evaluate_avatar1.jpg">-->
+    </div>
+    <div>
+        <strong>Copyright</strong> 北京奇虎科技有限公司 &copy; 2014-2018
+    </div>
+</div>
+        <!--右侧部分结束-->
+        <!--右侧边栏开始-->
+
+        <!--右侧边栏结束-->
+        <!--mini聊天窗口开始-->
+
+
+
+</div>
+
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.5"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/layer/layer.min.js"></script>
+    <script src="js/hplus.min.js?v=4.0.0"></script>
+    <script type="text/javascript" src="js/contabs.min.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+</body>
+
+</html>
