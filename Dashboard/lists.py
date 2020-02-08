@@ -4,7 +4,7 @@ from kubernetes import client, config
 class K8sList:
 
     def __init__(self):
-        config.load_incluster_config()
+        config.load_kube_config()
 
     def pod_num(self):
         return len(client.CoreV1Api().list_pod_for_all_namespaces(watch=False).items)
@@ -45,7 +45,7 @@ class BreadTask:
     version = 'v1alpha1'
 
     def __init__(self):
-        config.load_incluster_config()
+        config.load_kube_config()
         self.api = client.CustomObjectsApi()
 
     def Creat_Bread(self, name, namespace, gpu, mem, level,

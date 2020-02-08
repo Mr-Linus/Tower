@@ -5,8 +5,6 @@ from User.form import CreationForm
 
 
 # Create your views here.
-
-
 class UserLoginView(LoginView):
     template_name = 'User/login.html'
     redirect_authenticated_user = False
@@ -28,6 +26,9 @@ def add_user_view(request):
     if request.method == "POST":
         add_form = CreationForm(request.POST)
         if add_form.is_valid():
-            add_form.save(commit=True)
-            return redirect("/")
+            if add_form.CheckUsername():
+                add_form.save(commit=True)
+                return redirect("/")
+
         return render_to_response(template_name, {"add_form": add_form})
+

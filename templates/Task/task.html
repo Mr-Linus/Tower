@@ -128,14 +128,15 @@
                                             {% endif %}
                                             <td><i class="fa fa-clock-o"></i> {{ task.metadata.creationTimestamp }} </td>
                                             <td>
-                                                {% if task.spec.task.type != "ssh" %}
+                                                {% if task.status.phase == 'Running' %}
                                                 <a href="/task/detail/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
                                                     <span class="label label-info">
                                                         <i class="fa fa-eye"></i>
                                                         查看
                                                     </span>
                                                 </a>
-                                                {% endif %}&nbsp;
+                                                &nbsp;
+                                                {% endif %}
                                                 <a href="/task/delete/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
                                                     <span class="label label-danger">删除</span>
                                                 </a>

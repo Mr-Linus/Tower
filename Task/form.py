@@ -13,9 +13,6 @@ class CreateNamespaceForm(forms.Form):
     )
 
 
-
-
-
 class CreateJobForm(forms.Form):
     name = forms.CharField(
         max_length=20,
@@ -49,17 +46,12 @@ class CreateJobForm(forms.Form):
     framework = forms.ChoiceField(
         label="Framework",
         help_text="使用的深度学习框架类型。",
-        choices=(("tensorflow", "tensorflow"), ("pytorch", "pytorch")),
-        initial="tensorflow",
+        choices=(("tensorflow-2.0", "tensorflow-v2.0"), ("tensorflow-1.15", "tensorflow-v1.15"),
+                 ("pytorch-1.4", "pytorch-v1.4")),
+        initial="tensorflow-2.0",
         widget=Select()
     )
-    version = forms.ChoiceField(
-        label="Framework Version",
-        help_text="使用的机器学习框架版本,例如:2.0。",
-        choices=(("2.0", "2.0-(tensorflow)"), ("1.15", "1.15-(tensorflow)"), ("1.4", "1.4-(pytorch)")),
-        initial="2.0",
-        widget=Select()
-    )
+
     type = forms.ChoiceField(
         label="Type",
         help_text="任务工作类型。",
@@ -73,6 +65,8 @@ class CreateJobForm(forms.Form):
         help_text="执行的命令。若工作类型为'ssh',此项无效。",
         required=False
     )
+
+
 
 
 

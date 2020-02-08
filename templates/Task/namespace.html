@@ -114,7 +114,9 @@
                                                 </td>
                                             {% endif %}
                                             <td><i class="fa"></i> {{ ns.metadata.uid }} </td>
-                                            <td><a href="/task/namespace/delete/{{ ns.metadata.name }}"><span class="label label-danger">删除</span></a></td>
+                                            {% if ns.status.phase == 'Active' %}
+                                                <td><a href="/task/namespace/delete/{{ ns.metadata.name }}"><span class="label label-danger">删除</span></a></td>
+                                            {% endif %}
                                         </tr>
                                         {% endfor %}
                                         {% if len == 0  %}

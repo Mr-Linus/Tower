@@ -107,7 +107,7 @@
                                             <td><span class="label label-info">{{ s.metadata.name }}</span></td>
 
                                             <td><i class="fa"></i> {{ s.spec.ports.0.protocol }} </td>
-                                            <td><i class="fa"></i> {{ s.spec.ports.0.target_port }} </td>
+                                            <td><i class="fa"></i> {{ s.spec.ports.0.port }} </td>
                                             <td><i class="fa fa-clock-o"></i> {{ s.metadata.creation_timestamp }} </td>
 
                                             <td><a href="/service/delete/{{ s.metadata.name }}"><span class="label label-danger">删除</span></a></td>

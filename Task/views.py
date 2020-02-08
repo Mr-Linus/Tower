@@ -68,17 +68,8 @@ class CreateTaskView(LoginRequiredMixin, FormView):
     success_url = "/task"
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        # k = K8sTask()
-        # k.user = self.request.user.username
-        # k.namespace = form.cleaned_data['namespace']
-        # k.create_job(
-        #     name=form.cleaned_data['name'],
-        #     image=form.cleaned_data['image'],
-        #     cmd=cmd,
-        #     path="/gf/"+self.request.user,
-        # )
+        framework = form.cleaned_data['framework'].split('-')[0]
+        version = form.cleaned_data['framework'].split('-')[1]
         BreadTask().Creat_Bread(
             name=form.cleaned_data['name'],
             namespace=self.request.user.username,
@@ -86,8 +77,8 @@ class CreateTaskView(LoginRequiredMixin, FormView):
             mem=form.cleaned_data['memory'],
             level=form.cleaned_data['level'],
             command=form.cleaned_data['cmd'],
-            framework=form.cleaned_data['framework'],
-            version=form.cleaned_data['version'],
+            framework=framework,
+            version=version,
             task_type=form.cleaned_data['type'],
             path=self.request.user.username
         )
