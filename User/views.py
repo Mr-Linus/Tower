@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.decorators.csrf import csrf_exempt
 from User.form import CreationForm
@@ -30,5 +30,5 @@ def add_user_view(request):
                 add_form.save(commit=True)
                 return redirect("/")
 
-        return render_to_response(template_name, {"add_form": add_form})
+        return render(request, template_name, {"add_form": add_form})
 

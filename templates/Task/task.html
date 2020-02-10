@@ -35,41 +35,7 @@
 
         <div id="page-wrapper" class="gray-bg dashbard-1">
 
-            <div class="row border-bottom">
-                <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
-                    <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="/dashboard"><i class="fa fa-home"></i> </a>
-                    </div>
-
-                        <ul class="nav navbar-top-links navbar-right">
-
-                            <li class="dropdown">
-                                <a class="count-info" href="#">
-                                    <span class="m-r-sm text-muted welcome-message">帮助</span>
-                                </a>
-                            </li>
-
-                            <li class="dropdown">
-
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                    <span class="m-r-sm text-muted welcome-message">
-                                        <img alt="image" class="img-circle" width="30" height="30" src="/static/img/a5.jpg"/>
-                                        <span style="font-size: 13px;font-weight: 400"> {{ user }}
-                                            <b class="caret"></b>
-                                        </span>
-                                    </span>
-                                </a>
-                                <!--<ul class="dropdown-menu animated fadeInRight m-t-xs profile-dropdown">-->
-                                <ul role="menu" class="dropdown-menu dropdown-menu-right">
-                                    <li><a href=""><i class="fa fa-cogs"> </i><span> 个人信息</span></a></li>
-                                     <li><a id="switch_user"><i class="fa fa-exchange"></i><span> 用户页面</span></a></li>
-                                    <li><a href="/logout"><i class="fa fa-sign-out"></i> 注销登录</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                </nav>
-            </div>
+            {% include 'header.html' %}
 
             <div class="row J_mainContent"  style="overflow:auto" id="content-main">
                <div class="wrapper wrapper-content">
@@ -159,14 +125,7 @@
     </div>
 
             </div>
-            <div class="footer fixed">
-                <div class="pull-right">
-                    Version <strong>0.0.1</strong>
-                </div>
-                <div>
-                    <strong>Copyright</strong> Tower &copy; 2019
-                </div>
-            </div>
+           {% include 'footer.html' %}
         </div>
     </div>
 
