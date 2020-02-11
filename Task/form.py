@@ -1,8 +1,11 @@
 from django import forms
 from django.forms.widgets import Select
+import re
+from django.utils.translation import gettext_lazy as _
 
 
 class CreateNamespaceForm(forms.Form):
+
     namespace = forms.ChoiceField(
         label="NameSpace",
         help_text="一键创建命名空间,与用户名相同。",
@@ -14,6 +17,9 @@ class CreateNamespaceForm(forms.Form):
 
 
 class CreateJobForm(forms.Form):
+    error_messages = {
+        'name_lowcase': _("任务名称,任务名必须小写英文字母开头,后面可加数字,不可设置符号。"),
+    }
     name = forms.CharField(
         max_length=20,
         label="Name",
@@ -66,7 +72,16 @@ class CreateJobForm(forms.Form):
         required=False
     )
 
-
+    def is_valid(self):
+        st = re.compile(r"^.*[0-9]")
+        if len(re.findall(r'[A-Z]', self.data.get('name'))) == 0:
+            if "-" not in self.data.get('name'):
+                if "_" not in self.data.get('name'):
+                    if "@" not in self.data.get('name'):
+                        if not st.match(self.data.get('name')):
+                            return self.is_bound and not self.errors
+        self.add_error('name', error=self.error_messages['name_lowcase'])
+        return self.is_bound and not self.errors
 
 
 
