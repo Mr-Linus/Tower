@@ -37,7 +37,7 @@ class Service:
         return len(self.coreApi.list_namespaced_service(namespace).items) == 0
 
     def Max_Port(self):
-        portMax = 0
+        portMax = 11001
         for s in self.coreApi.list_service_for_all_namespaces().items:
             if 11000 <= s.spec.ports[0].port <= 19000:
                 if s.spec.ports[0].port > portMax:

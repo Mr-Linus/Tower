@@ -73,7 +73,7 @@ class CreateJobForm(forms.Form):
     )
 
     def is_valid(self):
-        st = re.compile(r"^.*[0-9]")
+        st = re.compile(r"^[0-9]")
         if len(re.findall(r'[A-Z]', self.data.get('name'))) == 0:
             if "-" not in self.data.get('name'):
                 if "_" not in self.data.get('name'):
