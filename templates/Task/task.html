@@ -83,18 +83,21 @@
                                                 <td><span class="label label-default">正在运行</span>
                                                 </td>
                                             {% elif task.status.phase == 'Pending' %}
-                                                <td><span class="label label-warning">Pending</span>
+                                                <td><span class="label label-warning">等待中</span>
                                                 </td>
                                             {% elif task.status.phase == 'Succeeded' %}
                                                 <td><span class="label label-success">执行成功</span>
                                                 </td>
+                                            {% elif task.status.phase == 'Failed' %}
+                                                <td><span class="label label-success">执行失败</span>
+                                                </td>
                                             {% else %}
-                                                <td><span class="label label-danger">未知状态</span>
+                                                <td><span class="label label-warning-light">加载中</span>
                                                 </td>
                                             {% endif %}
                                             <td><i class="fa fa-clock-o"></i> {{ task.metadata.creationTimestamp }} </td>
                                             <td>
-                                                {% if task.status.phase == 'Running' %}
+                                                {% if task.status.phase == 'Pending' or task.status.phase == 'Succeeded' or task.status.phase == 'Failed' %}
                                                 <a href="/task/detail/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
                                                     <span class="label label-info">
                                                         <i class="fa fa-eye"></i>
