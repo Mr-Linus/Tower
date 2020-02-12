@@ -97,7 +97,7 @@
                                             {% endif %}
                                             <td><i class="fa fa-clock-o"></i> {{ task.metadata.creationTimestamp }} </td>
                                             <td>
-                                                {% if task.status.phase == 'Pending' or task.status.phase == 'Succeeded' or task.status.phase == 'Failed' %}
+                                                {% if task.status.phase == 'Running' or task.status.phase == 'Succeeded' or task.status.phase == 'Failed' %}
                                                 <a href="/task/detail/{{ task.metadata.namespace }}/{{ task.metadata.name }}">
                                                     <span class="label label-info">
                                                         <i class="fa fa-eye"></i>
