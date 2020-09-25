@@ -108,64 +108,6 @@
                     <div class="col-sm-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>任务列表</h5>
-                                <div class="ibox-tools">
-                                    <a class="collapse-link">
-                                        <i class="fa fa-chevron-up"></i>
-                                    </a>
-                                    <a class="close-link">
-                                        <i class="fa fa-times"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="ibox-content">
-                                <table class="table table-hover no-margins">
-                                    <thead>
-                                        <tr>
-
-                                            <th>命名空间</th>
-                                            <th>任务名称</th>
-                                            <th>状态</th>
-                                            <th>日期</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% if task_len == 0 %}
-                                            <tr>
-                                                <td> 当前无任务。 </td>
-                                            </tr>
-                                        {% endif %}
-                                        {% for job in jobs %}
-                                        <tr>
-                                            <td>{{ job.metadata.namespace }}</td>
-                                            <td class="text-navy"> <i class="fa"></i>{{ job.metadata.name }}</td>
-                                            {% if job.status.phase == 'Running' %}
-                                                <td><span class="label label-warning">正在运行</span>
-                                                </td>
-                                           {% elif job.status.phase == 'Pending' %}
-                                                <td><span class="label label-warning">Pending</span>
-                                                </td>
-                                            {% elif job.status.phase == 'Succeeded' %}
-                                                <td><span class="label label-success">执行成功</span>
-                                                </td>
-                                            {% else %}
-                                                <td><span class="label label-danger">未知状态</span>
-                                            {% endif %}
-                                            <td><i class="fa fa-clock-o"></i> {{ job.metadata.creationTimestamp }} </td>
-                                        </tr>
-                                        {% endfor %}
-
-                                    </tbody>
-
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
                                 <h5>节点列表</h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
@@ -224,20 +166,13 @@
                             <div class="ibox-content no-padding border-left-right center-orientation">
                             </div>
                             <div class="ibox-content profile-content">
-                                <h4><strong>{{ user }}</strong></h4>
-                                <p>上次登录：<i class="fa fa-clock-o"></i> {{ user.last_login }}</p>
-                                <h5>
-                                    关于我：
-                                </h5>
-                                <p>
-                                     &nbsp; It's better to burn out than to fade away.
-                                </p>
-                                <div class="row m-t-lg">
-                                    <div class="col-md-4">
-                                        <span class="bar">E-mail</span>
-                                        <h5><strong></strong>{{ user.email }}</h5>
-                                    </div>
-                                </div>
+                                <p><strong>{{ user }}</strong> 上次登录：<i class="fa fa-clock-o"></i> {{ user.last_login }}</p>
+
+                                <br>
+                                <p>扫码加入 QQ 群</p>
+                                <img src="{% static "img/qqgroup.jpg"%}" height="200" width="200">
+
+
 
                             </div>
                         </div>

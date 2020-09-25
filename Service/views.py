@@ -5,8 +5,6 @@ from Service.form import CreateServiceForm
 from django.shortcuts import redirect
 from Service.Service import Service
 
-StartPort = 11000
-
 
 # Create your views here.
 class ServiceView(LoginRequiredMixin, FormView):
@@ -15,11 +13,9 @@ class ServiceView(LoginRequiredMixin, FormView):
     form_class = CreateServiceForm
 
     def form_valid(self, form):
-        global StartPort
-        StartPort += 1
         Service().Create_Service(name=form.cleaned_data['name'],
                                  namespace=self.request.user.username,
-                                 port=StartPort
+                                 port=Service().Max_Port()+1
                                  )
         return super().form_valid(form)
 

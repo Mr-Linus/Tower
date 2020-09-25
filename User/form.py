@@ -30,7 +30,7 @@ class CreationForm(UserCreationForm):
                   ]
 
     def CheckUsername(self):
-        st = re.compile(r"^.*[0-9]")
+        st = re.compile(r"^[0-9]")
         if len(re.findall(r'[A-Z]', self.cleaned_data.get('username'))) == 0:
             if "-" not in self.cleaned_data.get('username'):
                 if "_" not in self.cleaned_data.get('username'):

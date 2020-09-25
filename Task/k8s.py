@@ -27,8 +27,10 @@ class K8sTask:
         info = client.V1Namespace(
             api_version="v1",
             kind="Namespace",
-            metadata=client.V1ObjectMeta(name=self.namespace, labels={"user": self.user})
-        )
+            metadata=client.V1ObjectMeta(
+                name=self.namespace,
+                labels={
+                    "user": self.user}))
         return client.CoreV1Api().create_namespace(body=info)
 
     def delete_namespace(self):
@@ -41,7 +43,8 @@ class K8sTask:
         return client.BatchV1Api().list_job_for_all_namespaces().items
 
     def delete_job(self, name):
-        return client.BatchV1Api().delete_namespaced_job(name=name, namespace=self.namespace)
+        return client.BatchV1Api().delete_namespaced_job(
+            name=name, namespace=self.namespace)
 
     def create_job(self, name, image, cmd, path):
         container = client.V1Container(
@@ -64,7 +67,8 @@ class K8sTask:
             )
         )
         template = client.V1PodTemplateSpec(
-            metadata=client.V1ObjectMeta(name=name, labels={"user": self.user}),
+            metadata=client.V1ObjectMeta(
+                name=name, labels={"user": self.user}),
             spec=client.V1PodSpec(
                 # 重启策略
                 restart_policy="Never",
@@ -91,7 +95,8 @@ class K8sTask:
         )
 
     def get_pod_name_with_job(self, job_name):
-        job_uid = client.BatchV1Api().read_namespaced_job_status(job_name, self.namespace).metadata.uid
+        job_uid = client.BatchV1Api().read_namespaced_job_status(
+            job_name, self.namespace).metadata.uid
         for pod in client.CoreV1Api().list_pod_for_all_namespaces(watch=False).items:
             if pod.metadata.owner_references is not None:
                 if job_uid == pod.metadata.owner_references[0].uid:
@@ -99,7 +104,8 @@ class K8sTask:
         return None
 
     def get_pod_with_job(self, job_name):
-        job_uid = client.BatchV1Api().read_namespaced_job_status(job_name, self.namespace).metadata.uid
+        job_uid = client.BatchV1Api().read_namespaced_job_status(
+            job_name, self.namespace).metadata.uid
         for pod in client.CoreV1Api().list_pod_for_all_namespaces(watch=False).items:
             if pod.metadata.owner_references is not None:
                 if job_uid == pod.metadata.owner_references[0].uid:
@@ -128,9 +134,9 @@ class BreadTask:
         self.api = client.CustomObjectsApi()
         self.coreApi = client.CoreV1Api()
 
-    def Creat_Bread(self, name, namespace, gpu, mem, level,
-                    framework, version, task_type, path, command):
-        body={
+    def Creat_Bread(self, name, namespace, gpu, mem, clock,
+                    framework, version, task_type, priority, command):
+        body = {
             "apiVersion": "core.run-linux.com/v1alpha1",
             "kind": "Bread",
             "metadata": {
@@ -141,7 +147,8 @@ class BreadTask:
                 "scv": {
                     "gpu": gpu,
                     "memory": mem,
-                    "level": level,
+                    "clock": clock,
+                    "priority": priority,
                 },
                 "framework": {
                     "name": framework,
@@ -149,7 +156,6 @@ class BreadTask:
                 },
                 "task": {
                     "type": task_type,
-                    "path": path,
                     "command": command
                 }
             }

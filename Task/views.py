@@ -75,12 +75,12 @@ class CreateTaskView(LoginRequiredMixin, FormView):
             namespace=self.request.user.username,
             gpu=form.cleaned_data['gpu'],
             mem=form.cleaned_data['memory'],
-            level=form.cleaned_data['level'],
+            clock=form.cleaned_data['level'],
+            priority="0",
             command=form.cleaned_data['cmd'],
             framework=framework,
             version=version,
             task_type=form.cleaned_data['type'],
-            path=self.request.user.username
         )
         return super().form_valid(form)
 

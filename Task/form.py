@@ -44,19 +44,37 @@ class CreateJobForm(forms.Form):
     level = forms.ChoiceField(
         label="GPU 等级",
         help_text="使用的GPU性能,若使用CPU,此项无效。",
-        choices=(("Low", "Low - GeForce GT 720"),
-                 ("Medium", "Medium - GeForce GTX 1660"), ("High", "High - GeForce GTX Titan Xp")),
-        initial="Medium",
-        widget=Select()
-    )
+        choices=(
+            ("4001",
+             "Medium - GeForce GTX 1660"),
+            ("5705",
+             "High - GeForce GTX Titan Xp")),
+        initial="4001",
+        widget=Select())
     framework = forms.ChoiceField(
         label="Framework",
         help_text="使用的深度学习框架类型。",
-        choices=(("tensorflow-2.0", "tensorflow-v2.0"), ("tensorflow-1.15", "tensorflow-v1.15"),
-                 ("pytorch-1.4", "pytorch-v1.4")),
+        choices=(
+            ("cuda-10.0",
+             "cuda-v10.0-conda"),
+            ("cuda-10.1",
+             "cuda-v10.1-conda"),
+            ("cuda-11.0",
+             "cuda-v11.0-conda"),
+            ("tensorflow-2.1",
+             "tensorflow-v2.1"),
+            ("tensorflow-2.0",
+             "tensorflow-v2.0"),
+            ("tensorflow-1.15",
+             "tensorflow-v1.15"),
+            ("pytorch-1.3",
+             "pytorch-v1.3"),
+            ("pytorch-1.4",
+             "pytorch-v1.4"),
+            ("pytorch-1.0",
+             "pytorch-v1.0")),
         initial="tensorflow-2.0",
-        widget=Select()
-    )
+        widget=Select())
 
     type = forms.ChoiceField(
         label="Type",
@@ -73,15 +91,12 @@ class CreateJobForm(forms.Form):
     )
 
     def is_valid(self):
-        st = re.compile(r"^.*[0-9]")
+        st = re.compile(r"^[0-9]")
         if len(re.findall(r'[A-Z]', self.data.get('name'))) == 0:
-            if "-" not in self.data.get('name'):
+            if "." not in self.data.get('name'):
                 if "_" not in self.data.get('name'):
                     if "@" not in self.data.get('name'):
                         if not st.match(self.data.get('name')):
                             return self.is_bound and not self.errors
         self.add_error('name', error=self.error_messages['name_lowcase'])
         return self.is_bound and not self.errors
-
-
-
